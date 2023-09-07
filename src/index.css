@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+
+.count-number {
+  @apply bg-emerald-300 px-1 rounded-md text-black
+}
+
+.icon-check {
+  @apply bg-stone-600 rounded-full p-1 cursor-pointer hover:bg-white transition-colors;
+}
+.icon-check--active {
+  @apply bg-green-400 rounded-full p-1 cursor-pointer
+}
+.icon-check-logo {
+  @apply fill-white text-base group-hover:fill-stone-600
+}
+.icon-check-logo--active {
+  @apply fill-stone-600 text-base
+}
+
+@tailwind utilities;
