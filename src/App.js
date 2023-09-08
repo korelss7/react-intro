@@ -16,10 +16,16 @@ const defaultTodos = [
 function App() {
   const [search, setSearch] = useState("");
   const [todos, setTodos] = useState(defaultTodos);
+
   const completedTodos = todos.filter((e) => e.completed).length;
   const totalTodos = todos.length;
+  const searchedTodos = todos.filter((e) => {
+    const task = e.task.toLowerCase();
+    const searchValue = search.toLowerCase();
+    return task.includes(searchValue);
+  });
+  console.log(searchedTodos);
 
-  console.log(completedTodos);
   return (
     <article className="bg-stone-800 w-full min-h-screen text-white flex flex-col items-center font-montserrat scroll-smooth">
       <section className="flex flex-col items-center gap-3 mt-6 mb-4">
@@ -28,7 +34,7 @@ function App() {
       </section>
 
       <TodoList>
-        {defaultTodos.map(({ task, completed }) => (
+        {searchedTodos.map(({ task, completed }) => (
           <TodoItem task={task} completed={completed} key={task} />
         ))}
       </TodoList>
