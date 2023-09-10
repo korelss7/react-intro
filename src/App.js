@@ -5,12 +5,12 @@ import { TodoList } from "./TodoList";
 import { TodoItem } from "./TodoItem";
 import { CreateTodoButton } from "./CreateTodoButton";
 
-const defaultTodos = [
-  { task: "Cortar cebolla", completed: true },
-  { task: "Comprar comida china del mercado en media hora", completed: false },
-  { task: "Hacer la ultima tarea", completed: false },
-  { task: "Praticar para el partido", completed: true },
-  { task: "Praticar para el torneo", completed: true },
+let defaultTodos = [
+  { text: "Cortar cebolla", completed: false },
+  { text: "Comprar en media hora", completed: false },
+  { text: "Hacer la ultima tarea", completed: false },
+  { text: "Praticar para el partido", completed: false },
+  { text: "Praticar para el torneo", completed: false },
 ];
 
 function App() {
@@ -20,11 +20,23 @@ function App() {
   const completedTodos = todos.filter((e) => e.completed).length;
   const totalTodos = todos.length;
   const searchedTodos = todos.filter((e) => {
-    const task = e.task.toLowerCase();
+    const text = e.text.toLowerCase();
     const searchValue = search.toLowerCase();
-    return task.includes(searchValue);
+    return text.includes(searchValue);
   });
-  console.log(searchedTodos);
+
+  function completedTodo(text) {
+    const newTodos = [...todos];
+    const indexTodo = newTodos.findIndex((e) => e.text === text);
+    newTodos[indexTodo].completed = true;
+    setTodos(newTodos);
+    console.log("Completado: ", text);
+  }
+  function deleteTodo(text) {
+    const newTodos = todos.filter((e) => e.text !== text);
+    setTodos(newTodos);
+    console.log("Eliminado: ", text);
+  }
 
   return (
     <article className="bg-stone-800 w-full min-h-screen text-white flex flex-col items-center font-montserrat scroll-smooth">
@@ -34,8 +46,14 @@ function App() {
       </section>
 
       <TodoList>
-        {searchedTodos.map(({ task, completed }) => (
-          <TodoItem task={task} completed={completed} key={task} />
+        {searchedTodos.map(({ text, completed }) => (
+          <TodoItem
+            task={text}
+            completed={completed}
+            key={text}
+            onComplete={() => completedTodo(text)}
+            onDelete={() => deleteTodo(text)}
+          />
         ))}
       </TodoList>
 
