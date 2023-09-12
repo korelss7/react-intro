@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 import { TodoCounter } from "./TodoCounter";
 import { TodoSearch } from "./TodoSearch";
 import { TodoList } from "./TodoList";
@@ -15,20 +16,11 @@ let defaultTodos = [
 
 function App() {
   const [search, setSearch] = useState("");
-  const [todos, setTodos] = useState(() => {
-    const stored = window.localStorage.getItem("TODOS_V1");
-    const storedParsed = JSON.parse(stored);
-    return storedParsed || defaultTodos;
-  });
-
-  function setStoredValue(newValue) {
-    const stringifyValue = JSON.stringify(newValue);
-    window.localStorage.setItem("TODOS_V1", stringifyValue);
-    setTodos(newValue);
-  }
+  const [todos, setTodos] = useLocalStorage("TODOS_V1", defaultTodos);
 
   const completedTodos = todos.filter((e) => e.completed).length;
   const totalTodos = todos.length;
+
   const searchedTodos = todos.filter((e) => {
     const text = e.text.toLowerCase();
     const searchValue = search.toLowerCase();
@@ -39,12 +31,12 @@ function App() {
     const newTodos = [...todos];
     const indexTodo = newTodos.findIndex((e) => e.text === text);
     newTodos[indexTodo].completed = true;
-    setStoredValue(newTodos);
+    setTodos(newTodos);
     console.log("Completado: ", text);
   }
   function deleteTodo(text) {
     const newTodos = todos.filter((e) => e.text !== text);
-    setStoredValue(newTodos);
+    setTodos(newTodos);
     console.log("Eliminado: ", text);
   }
 
