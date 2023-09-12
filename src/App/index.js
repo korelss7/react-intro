@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-import { TodoCounter } from "./TodoCounter";
-import { TodoSearch } from "./TodoSearch";
-import { TodoList } from "./TodoList";
-import { TodoItem } from "./TodoItem";
-import { CreateTodoButton } from "./CreateTodoButton";
+import AppUI from "./AppUI";
 
 let defaultTodos = [
   { text: "Cortar cebolla", completed: false },
@@ -41,26 +37,15 @@ function App() {
   }
 
   return (
-    <article className="bg-stone-800 w-full min-h-screen text-white flex flex-col items-center font-montserrat scroll-smooth">
-      <section className="flex flex-col items-center gap-3 mt-6 mb-4">
-        <TodoCounter completed={completedTodos} total={totalTodos} />
-        <TodoSearch searchValue={search} setSearchValue={setSearch} />
-      </section>
-
-      <TodoList>
-        {searchedTodos.map(({ text, completed }) => (
-          <TodoItem
-            task={text}
-            completed={completed}
-            key={text}
-            onComplete={() => completedTodo(text)}
-            onDelete={() => deleteTodo(text)}
-          />
-        ))}
-      </TodoList>
-
-      <CreateTodoButton />
-    </article>
+    <AppUI
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      search={search}
+      setSearch={setSearch}
+      searchedTodos={searchedTodos}
+      completedTodo={completedTodo}
+      deleteTodo={deleteTodo}
+    />
   );
 }
 export { App };
