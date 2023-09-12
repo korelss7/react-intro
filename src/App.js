@@ -15,7 +15,17 @@ let defaultTodos = [
 
 function App() {
   const [search, setSearch] = useState("");
-  const [todos, setTodos] = useState(defaultTodos);
+  const [todos, setTodos] = useState(() => {
+    const stored = window.localStorage.getItem("TODOS_V1");
+    const storedParsed = JSON.parse(stored);
+    return storedParsed || defaultTodos;
+  });
+
+  function setStoredValue(newValue) {
+    const stringifyValue = JSON.stringify(newValue);
+    window.localStorage.setItem("TODOS_V1", stringifyValue);
+    setTodos(newValue);
+  }
 
   const completedTodos = todos.filter((e) => e.completed).length;
   const totalTodos = todos.length;
@@ -29,12 +39,12 @@ function App() {
     const newTodos = [...todos];
     const indexTodo = newTodos.findIndex((e) => e.text === text);
     newTodos[indexTodo].completed = true;
-    setTodos(newTodos);
+    setStoredValue(newTodos);
     console.log("Completado: ", text);
   }
   function deleteTodo(text) {
     const newTodos = todos.filter((e) => e.text !== text);
-    setTodos(newTodos);
+    setStoredValue(newTodos);
     console.log("Eliminado: ", text);
   }
 
