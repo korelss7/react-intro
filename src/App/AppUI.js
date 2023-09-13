@@ -5,6 +5,8 @@ import { TodoItem } from "../TodoItem";
 import { CreateTodoButton } from "../CreateTodoButton";
 
 const AppUI = ({
+  loading,
+  error,
   completedTodos,
   totalTodos,
   search,
@@ -21,6 +23,8 @@ const AppUI = ({
       </section>
 
       <TodoList>
+        {loading && <p>Cargando TODOs...</p>}
+        {error && <p>Ocurrió un error</p>}
         {searchedTodos.map(({ text, completed }) => (
           <TodoItem
             task={text}
