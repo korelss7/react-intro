@@ -1,7 +1,7 @@
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
 const TodoItem = ({ task, completed = false, onComplete, onDelete }) => (
-  <li className="px-4 py-2 relative flex items-center gap-3 bg-transparent border-2 rounded-3xl border-stone-600 min-w-full sm:max-w-lg md:max-w-xl">
+  <li className="px-4 py-2 relative flex items-center gap-3 bg-transparent border-2 rounded-3xl border-stone-600 w-11/12 max-w-2xl">
     <span
       className={`${completed ? "icon-check--active" : "icon-check"} group`}
       onClick={onComplete}

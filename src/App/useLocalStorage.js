@@ -31,7 +31,7 @@ export const useLocalStorageExtra = (key, defaultValue) => {
         setLoading(false);
         setError(true);
       }
-    }, 1200);
+    }, 2000);
   }, []);
 
   const saveValue = (value) => {

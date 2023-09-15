@@ -1,5 +1,9 @@
 const TodoList = ({ children }) => {
-  return <ul className="flex flex-col gap-4 px-3 sm:px-0 mb-10">{children}</ul>;
+  return (
+    <ul className="w-full flex flex-col items-center gap-4 sm:px-0 mb-10">
+      {children}
+    </ul>
+  );
 };
 
 export { TodoList };
