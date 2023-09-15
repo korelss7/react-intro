@@ -32,5 +32,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.3.3"
-  }
+  },
+  "homepage": "https://github.com/korelss7/react-intro"
 }
