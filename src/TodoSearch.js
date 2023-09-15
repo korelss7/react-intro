@@ -1,11 +1,15 @@
-const TodoSearch = ({ searchValue, setSearchValue }) => {
+import { useContext } from "react";
+import { TodoContext } from "./TodoContext";
+
+const TodoSearch = () => {
+  const { search, setSearch } = useContext(TodoContext);
   return (
     <input
-      value={searchValue}
+      value={search}
       placeholder="Cortar Cebollas"
       className="bg-zinc-700 placeholder-stone-400 text-white text-center border-2 border-zinc-700 outline-none p-2 rounded-xl w-64 sm:w-96 text-base font-medium hover:shadow-md hover:shadow-neutral-500 transition-shadow focus:border-white focus:shadow-neutral-500 focus:shadow-md"
       onChange={(event) => {
-        setSearchValue(event.target.value);
+        setSearch(event.target.value);
       }}
     ></input>
   );
