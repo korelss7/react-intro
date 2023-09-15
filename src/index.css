@@ -3,7 +3,7 @@
 
 
 .modalBackground {
-  @apply flex items-center justify-center top-0 w-full h-screen absolute;
+  @apply flex items-center justify-center top-0 w-full h-screen absolute backdrop-blur-sm bg-black/5 text-white;
 }
 .count-number {
   @apply bg-emerald-300 px-1 rounded-md text-black

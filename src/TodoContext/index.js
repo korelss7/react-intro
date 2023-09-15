@@ -5,7 +5,7 @@ const TodoContext = React.createContext();
 
 function TodoProvider({ children }) {
   const [search, setSearch] = useState("");
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const {
     value: todos,
     saveValue: setTodos,
@@ -34,6 +34,12 @@ function TodoProvider({ children }) {
     setTodos(newTodos);
     console.log("Eliminado: ", text);
   }
+  function addTodo(text) {
+    const newTodos = [...todos];
+    newTodos.push({ text, completed: false });
+    setTodos(newTodos);
+    console.log("Añadido: ", text);
+  }
 
   return (
     <TodoContext.Provider
@@ -49,6 +55,7 @@ function TodoProvider({ children }) {
         deleteTodo,
         openModal,
         setOpenModal,
+        addTodo,
       }}
     >
       {children}

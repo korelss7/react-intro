@@ -7,6 +7,7 @@ import { ListSkeleton, CounterSkeleton } from "../Skeletons";
 import { useContext } from "react";
 import { TodoContext } from "../TodoContext";
 import { Modal } from "../Modal";
+import { TodoForm } from "../TodoForm";
 
 const AppUI = () => {
   const {
@@ -16,7 +17,6 @@ const AppUI = () => {
     completedTodo,
     deleteTodo,
     openModal,
-    setOpenModal,
   } = useContext(TodoContext);
   return (
     <article className="bg-stone-800 w-full min-h-screen text-white flex flex-col items-center font-montserrat scroll-smooth">
@@ -41,7 +41,11 @@ const AppUI = () => {
 
       <CreateTodoButton />
 
-      {openModal && <Modal>Funcionalidad de agregar TODO</Modal>}
+      {openModal && (
+        <Modal>
+          <TodoForm />
+        </Modal>
+      )}
     </article>
   );
 };
