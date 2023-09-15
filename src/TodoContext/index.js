@@ -5,6 +5,7 @@ const TodoContext = React.createContext();
 
 function TodoProvider({ children }) {
   const [search, setSearch] = useState("");
+  const [openModal, setOpenModal] = useState(true);
   const {
     value: todos,
     saveValue: setTodos,
@@ -46,6 +47,8 @@ function TodoProvider({ children }) {
         searchedTodos,
         completedTodo,
         deleteTodo,
+        openModal,
+        setOpenModal,
       }}
     >
       {children}

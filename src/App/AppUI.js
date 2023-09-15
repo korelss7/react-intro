@@ -6,10 +6,18 @@ import { CreateTodoButton } from "../CreateTodoButton";
 import { ListSkeleton, CounterSkeleton } from "../Skeletons";
 import { useContext } from "react";
 import { TodoContext } from "../TodoContext";
+import { Modal } from "../Modal";
 
 const AppUI = () => {
-  const { loading, error, searchedTodos, completedTodo, deleteTodo } =
-    useContext(TodoContext);
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completedTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+  } = useContext(TodoContext);
   return (
     <article className="bg-stone-800 w-full min-h-screen text-white flex flex-col items-center font-montserrat scroll-smooth">
       <section className="flex flex-col items-center gap-3 mt-6 mb-4">
@@ -32,6 +40,8 @@ const AppUI = () => {
       </TodoList>
 
       <CreateTodoButton />
+
+      {openModal && <Modal>Funcionalidad de agregar TODO</Modal>}
     </article>
   );
 };
