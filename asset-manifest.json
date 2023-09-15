@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/korelss7/react-intro/static/css/main.54476a02.css",
-    "main.js": "/korelss7/react-intro/static/js/main.9d915800.js",
-    "index.html": "/korelss7/react-intro/index.html",
-    "main.54476a02.css.map": "/korelss7/react-intro/static/css/main.54476a02.css.map",
-    "main.9d915800.js.map": "/korelss7/react-intro/static/js/main.9d915800.js.map"
+    "main.css": "/react-intro/static/css/main.54476a02.css",
+    "main.js": "/react-intro/static/js/main.9d915800.js",
+    "index.html": "/react-intro/index.html",
+    "main.54476a02.css.map": "/react-intro/static/css/main.54476a02.css.map",
+    "main.9d915800.js.map": "/react-intro/static/js/main.9d915800.js.map"
   },
   "entrypoints": [
     "static/css/main.54476a02.css",
